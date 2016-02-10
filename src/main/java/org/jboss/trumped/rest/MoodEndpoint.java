@@ -47,7 +47,7 @@ public class MoodEndpoint {
 			final int republicanScore = computeScore(republicanWordCounts); 
 			result.put(democratCandidate, democratScore);
 			result.put(republicanCandidate, republicanScore);
-			System.out.println(result);
+			//System.out.println(result);
 			return Response.ok(result).build();
 		} catch (Throwable e) {
 			e.printStackTrace();
