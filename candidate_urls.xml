@@ -82,10 +82,32 @@
       Bernie Sanders
     </name>
     <URLS>
-      <URL>http://www.nytimes.com/2016/02/10/us/politics/new-hampshire-primary.html</URL>
-      <URL>http://www.theguardian.com/us-news/2016/feb/09/donald-trump-wins-new-hampshire-republican-primary-us-election-2016</URL>
-      <URL>http://www.vox.com/2016/2/9/10955378/new-hampshire-primary-results-trump-wins</URL>
-      <URL>http://edition.cnn.com/2016/02/09/politics/new-hampshire-primary-highlights/</URL>
+        <URL>http://www.usatoday.com/story/news/politics/elections/2016/02/09/new-hampshire-primary-bernie-sanders-hillary-clinton/80077600/#</URL>
+        <URL>http://edition.cnn.com/2016/02/09/politics/new-hampshire-primary-democrats-bernie-sanders-hillary-clinton/</URL>
+        <URL>http://edition.cnn.com/2015/06/15/opinions/zelizer-bernie-sanders/</URL>
+        <URL>http://www.foxnews.com/opinion/2016/02/09/bernie-sanders-seems-to-love-canada-will.html</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      Hillary Clinton
+    </name>
+    <URLS>
+      <URL>http://www.latimes.com/opinion/opinion-la/la-ol-hillaryclinton-abortion-campaign-20160209-story.html</URL>
+      <URL>http://thehill.com/opinion/dick-morris/268831-dick-morris-clinton-deploys-b-team</URL>
+      <URL>http://www.esquire.com/news-politics/politics/a22860/hillary-clinton-2016-opinion-0613/</URL>
+      <URL>http://edition.cnn.com/2016/02/08/opinions/hillary-clinton-be-proud-of-wall-street-speeches-macintosh/</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      Martin O'Malley
+    </name>
+    <URLS>
+      <URL>https://www.washingtonpost.com/opinions/ts-time-to-take-a-serious-look-at-martin-omalley/2016/01/27/1cf1f040-c465-11e5-a4aa-f25866ba0dc6_story.html</URL>
+      <URL>http://www.forbes.com/sites/travisbrown/2015/12/22/the-truth-about-martin-omalleys-stellar-record-in-maryland/#415825533953</URL>
+      <URL>http://blogs.wsj.com/washwire/2016/01/09/martin-omalley-calls-for-new-gun-control-measures-at-iowa-gun-show/</URL>
+      <URL>http://takingnote.blogs.nytimes.com/2015/12/16/you-asked-martin-omalley-answered/?_r=0</URL>
     </URLS>
   </candidate>
 
