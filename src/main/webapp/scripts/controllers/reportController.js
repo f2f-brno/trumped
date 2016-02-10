@@ -12,7 +12,7 @@ angular
 
 					$scope.mood = function(republican, democrat) {
 						var contextPath = $location.absUrl()
-								.contains('trumped/') ? '/trumped' : '';
+								.contains('http://trumped') ? '/' : '/trumped';
 						$scope.republicansImg = null;
 						$scope.democratsImg = null;
 						$scope.result = {};
