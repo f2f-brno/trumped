@@ -38,17 +38,25 @@ public class MoodEndpoint {
 	public Response compare(@QueryParam("democrat") String democratCandidate,
 			@QueryParam("republican") String republicanCandidate) {
 		try {
-			final Map<String, Long> democratMood = contentAnalyzer.countWordsByEmotion(democratCandidate);
-			final Map<String, Long> republicanMood = contentAnalyzer.countWordsByEmotion(republicanCandidate);
-			final Map<String, Map<String, Long>> result = new HashMap<>();
-			result.put(democratCandidate, democratMood);
-			result.put(republicanCandidate, republicanMood);
+			final Map<String, Long> democratWordsCounts = contentAnalyzer.countWordsByEmotion(democratCandidate);
+			final Map<String, Long> republicanWordCounts = contentAnalyzer.countWordsByEmotion(republicanCandidate);
+			final Map<String, Integer> result = new HashMap<>();
+			// building scores from the positive / (positive + nagative) counts
+			
+			final int democratScore = computeScore(democratWordsCounts); 
+			final int republicanScore = computeScore(republicanWordCounts); 
+			result.put(democratCandidate, democratScore);
+			result.put(republicanCandidate, republicanScore);
 			System.out.println(result);
 			return Response.ok(result).build();
 		} catch (Throwable e) {
 			e.printStackTrace();
 			return Response.serverError().entity(e.getMessage()).build();
 		}
+	}
+
+	private int computeScore(final Map<String, Long> moods) {
+		return (int) (100 * (moods.get("positive") / (moods.get("positive") + moods.get("nagative"))));
 	}
 
 }
