@@ -5,10 +5,76 @@
       Donald Trump
     </name>
     <URLS>
-      <URL>http://www.nytimes.com/2016/02/10/us/politics/new-hampshire-primary.html</URL>
       <URL>http://www.theguardian.com/us-news/2016/feb/09/donald-trump-wins-new-hampshire-republican-primary-us-election-2016</URL>
-      <URL>http://www.vox.com/2016/2/9/10955378/new-hampshire-primary-results-trump-wins</URL>
-      <URL>http://edition.cnn.com/2016/02/09/politics/new-hampshire-primary-highlights/</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      John Kasich
+    </name>
+    <URLS>
+      <URL>http://www.abc.net.au/news/2016-02-10/john-kasich-has-his-moment-in-new-hampshire/7157292</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      Ted Cruz
+    </name>
+    <URLS>
+      <URL>http://www.ibtimes.com/new-hampshire-ted-cruz-gives-victory-speech-even-though-no-one-seems-really-him-2300733</URL>
+      <URL>http://www.huffingtonpost.com/entry/new-hampshire-ted-cruz_us_56ba9451e4b08ffac12336ed</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      Jeb Bush
+    </name>
+    <URLS>
+      <URL>https://www.bostonglobe.com/metro/2016/02/09/bush/O0xJPzJNRXQxHvsos2C3tM/story.html</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      Marco Rubio
+    </name>
+    <URLS>
+      <URL>http://www.theguardian.com/us-news/2016/feb/09/marco-rubio-new-hampshire-primary-us-election-2016</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      Chris Christie
+    </name>
+    <URLS>
+      <URL>http://www.theatlantic.com/politics/archive/2016/02/chris-christie-new-hampshire/462096/</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      Carly Fiorina
+    </name>
+    <URLS>
+      <URL>http://time.com/4208526/carly-fiorina-new-hampshire-women/</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      Ben Carson
+    </name>
+    <URLS>
+      <URL>http://thehill.com/blogs/ballot-box/presidential-races/268858-carson-leaves-for-south-carolina-before-nh-polls-close</URL>
+      <URL>http://www.cbsnews.com/news/ben-carson-to-skip-new-hampshire-primary-night-event/</URL>
+      <URL>http://www.breitbart.com/big-government/2016/02/09/ben-carson-will-ditch-his-new-hampshire-primary-party/</URL>
+      <URL>http://www.vanityfair.com/news/2016/02/ben-carson-new-hampshire</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      Jim Gilmore
+    </name>
+    <URLS>
+      <URL>https://www.romper.com/p/jim-gilmore-didnt-win-new-hampshire-but-he-obviously-had-the-most-fun-5363</URL>
+      <URL>http://theweek.com/speedreads/604866/jim-gilmore-just-wanted-some-recognition-new-hampshire</URL>
     </URLS>
   </candidate>
   <candidate>
