@@ -12,7 +12,6 @@
 package org.jboss.trumped.data;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
