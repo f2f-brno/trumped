@@ -7,6 +7,7 @@ angular.module('trumpedwebapp',['ngRoute','ngResource'])
       .when('/Feeds',{templateUrl:'views/Feed/search.html',controller:'SearchFeedController'})
       .when('/Feeds/new',{templateUrl:'views/Feed/detail.html',controller:'NewFeedController'})
       .when('/Feeds/edit/:FeedId',{templateUrl:'views/Feed/detail.html',controller:'EditFeedController'})
+      .when('/reports',{templateUrl:'views/report.html',controller:'ReportController'})
       .otherwise({
         redirectTo: '/'
       });

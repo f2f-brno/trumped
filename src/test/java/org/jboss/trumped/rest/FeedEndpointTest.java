@@ -15,7 +15,6 @@ import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.*;
 
 @RunWith(Arquillian.class)
-@Ignore
 public class FeedEndpointTest {
 
 	@Inject
