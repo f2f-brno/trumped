@@ -29,9 +29,9 @@ public class UrlContentAnalyzerTest {
 	@Test
 	public void shouldCountWords() throws MalformedURLException, IOException, SAXException, TikaException {
 		// given
-		final String url = "http://nytimes.com";
+		final String candidate = "Donald Trump";
 		// when
-		Map<String, Long> countWords = new UrlContentAnalyzer().countWords(url);
+		Map<String, Long> countWords = new UrlContentAnalyzer().countWordsByEmotion(candidate);
 		// then
 		assertThat(countWords).isNotEmpty();
 	}
