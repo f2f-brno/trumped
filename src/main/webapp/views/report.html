@@ -27,10 +27,12 @@
 		<hr/>
 		<div class="row" ng-unless="loading">
 			<div class="col-md-6 text-center">
-				<img width="300" height="300" ng-src="{{democratsImg}}" ng-if="democratsImg">
+				<h3>Score: {{result[republican]}}</h3>
+				<img width="300" height="300" ng-src="{{republicansImg}}" ng-if="republicansImg">
 			</div>
 			<div class="col-md-6 text-center">
-				<img width="300" height="300" ng-src="{{republicansImg}}" ng-if="republicansImg">
+				<h3>Score: {{result[democrat]}}</h3>
+				<img width="300" height="300" ng-src="{{democratsImg}}" ng-if="democratsImg">
 			</div>
 		</div>
 		<div class="row" ng-if="loading">
