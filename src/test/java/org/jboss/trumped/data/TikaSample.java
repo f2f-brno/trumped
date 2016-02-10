@@ -22,6 +22,7 @@ import java.util.List;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
+import org.apache.lucene.analysis.core.StopFilter;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
@@ -53,10 +54,12 @@ public class TikaSample {
 		List<String> result = new ArrayList<String>();
 		try {
 			TokenStream stream = analyzer.tokenStream(null, new StringReader(string));
-			stream.reset();
-			while (stream.incrementToken()) {
-				result.add(stream.getAttribute(CharTermAttribute.class).toString());
+			StopFilter stopFilter = new StopFilter(stream, StopWords.SET);
+			stopFilter.reset();
+			while (stopFilter.incrementToken()) {
+				result.add(stopFilter.getAttribute(CharTermAttribute.class).toString());
 			}
+			stopFilter.close();
 		} catch (IOException e) {
 			// not thrown b/c we're using a string reader...
 			throw new RuntimeException(e);
