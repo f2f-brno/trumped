@@ -55,8 +55,8 @@ public class MoodEndpoint {
 		}
 	}
 
-	private int computeScore(final Map<String, Long> moods) {
-		return (int) (100 * (moods.get("positive") / (moods.get("positive") + moods.get("negative"))));
+	public static int computeScore(final Map<String, Long> moods) {
+		return (int) ((100 * moods.get("positive") / (moods.get("positive") + moods.get("negative"))));
 	}
 
 }
