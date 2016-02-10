@@ -70,9 +70,10 @@ public class UrlContentAnalyzer {
 		return negativeEmotions;
 	}
 	
-	public Map<String, Long> countWords(final String url)
+	public Map<String, Long> countWords(final String candidateName)
 			throws MalformedURLException, IOException, SAXException, TikaException {
-		final List<String> words = tokenizePage(url);
+		
+		final List<String> words = tokenizePage(null);
 		return words.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 	}
 	
