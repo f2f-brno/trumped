@@ -1,4 +1,27 @@
-<div class="form-control">
-	Content page should be seen here.
-
+<h2>An advanced mood &amp; buzzwords analyzer</h2>
+<div class="container-fluid">
+	<div class="form-group">
+		<div class="row">
+			<div class="col-md-5 text-right">
+				<select id="left" ng-model="left" ng-required="true"
+					class="form-control">
+					<option value="">Select a candidate</option>
+					<option ng-repeat="item in republicans">{{item}}</option>
+				</select>
+			</div>
+			<div class="col-md-2 text-center">vs.</div>
+			<div class="col-md-5 text-left">
+				<select id="right" ng-model="right" ng-required="true"
+					class="form-control">
+					<option value="">Select a candidate</option>
+					<option ng-repeat="item in democrats">{{item}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<button type="button" class="btn btn-primary">FIGHT !</button>
+			</div>
+		</div>
+	</div>
 </div>
