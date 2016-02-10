@@ -9,4 +9,5 @@ deploy:
   provider: openshift
   user: "ALRubinger"
   password: "changeme"
-  domain: "brnochallenge"
+  domain: "alrubingertemp"
+  app: "brnochallenge"
