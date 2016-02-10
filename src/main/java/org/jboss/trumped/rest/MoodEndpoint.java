@@ -17,7 +17,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import org.jboss.trumped.data.UrlContentAnalyzer;
@@ -33,8 +33,8 @@ public class MoodEndpoint {
 
 	@GET
 	@Path("/")
-	public Response compare(@PathParam("democrat") String democratCandidate,
-			@PathParam("republican") String republicanCandidate) {
+	public Response compare(@QueryParam("democrat") String democratCandidate,
+			@QueryParam("republican") String republicanCandidate) {
 		try {
 			final Map<String, Long> republicanMood = contentAnalyzer.countWordsByEmotion(republicanCandidate);
 			final Map<String, Long> democratMood = contentAnalyzer.countWordsByEmotion(republicanCandidate);
