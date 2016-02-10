@@ -1,0 +1,14 @@
+republicans:
+Donald Trump
+John Kasich
+Ted Cruz
+Jeb Bush
+Marco Rubio
+Chris Christie
+Carly Fiorina
+Ben Carson
+Jim Gilmore
+democrats:
+Bernie Sanders
+Hillary Clinton
+Martin O'Malley
