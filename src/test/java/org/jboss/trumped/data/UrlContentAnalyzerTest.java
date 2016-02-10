@@ -35,4 +35,15 @@ public class UrlContentAnalyzerTest {
 		// then
 		assertThat(countWords).isNotEmpty();
 	}
+	
+	@Test
+	public void shouldLoadEmotions() {
+		// given
+		UrlContentAnalyzer urlContentAnalyzer = new UrlContentAnalyzer();
+		// when
+		urlContentAnalyzer.loadEmotions();
+		// then
+		assertThat(urlContentAnalyzer.getPositiveEmotions()).isNotNull().isNotEmpty();
+		assertThat(urlContentAnalyzer.getNegativeEmotions()).isNotNull().isNotEmpty();
+	}
 }

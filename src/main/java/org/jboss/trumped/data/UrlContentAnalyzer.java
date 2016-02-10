@@ -23,6 +23,9 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
@@ -36,20 +39,44 @@ import org.apache.tika.sax.BodyContentHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
+import org.yaml.snakeyaml.Yaml;
 
 /**
  * Pulls the content from an URL and tokenizes/filters the text from the HTML
  * page.
  */
+@ApplicationScoped
 public class UrlContentAnalyzer {
 
 	public static final Logger LOGGER = LoggerFactory.getLogger(UrlContentAnalyzer.class);
 
+	private List<String> positiveEmotions = new ArrayList<>();
+	private List<String> negativeEmotions = new ArrayList<>();
+	
+	@PostConstruct
+	public void loadEmotions() {
+		final InputStream emotionsStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("emotions.yml");
+		final Yaml yaml = new Yaml();
+		final Map<String, List<String>> emotions = (Map<String, List<String>>) yaml.load(emotionsStream);
+		this.positiveEmotions = emotions.get("positive");
+		this.negativeEmotions = emotions.get("negative");
+	}
+
+	public List<String> getPositiveEmotions() {
+		return positiveEmotions;
+	}
+	
+	public List<String> getNegativeEmotions() {
+		return negativeEmotions;
+	}
+	
 	public Map<String, Long> countWords(final String url)
 			throws MalformedURLException, IOException, SAXException, TikaException {
 		final List<String> words = tokenizePage(url);
 		return words.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 	}
+	
+	
 
 	/**
 	 * Tokenizes the content of the given URL
