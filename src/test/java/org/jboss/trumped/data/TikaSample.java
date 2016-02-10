@@ -54,7 +54,7 @@ public class TikaSample {
 		List<String> result = new ArrayList<String>();
 		try {
 			TokenStream stream = analyzer.tokenStream(null, new StringReader(string));
-			StopFilter stopFilter = new StopFilter(stream, StopWords.SET);
+			StopFilter stopFilter = new StopFilter(stream, StopWords.getSet());
 			stopFilter.reset();
 			while (stopFilter.incrementToken()) {
 				result.add(stopFilter.getAttribute(CharTermAttribute.class).toString());

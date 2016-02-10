@@ -7,7 +7,7 @@ public class StopWordsTest {
 
 	@Test
 	public void testStopWordSet() {
-		Assert.assertTrue(StopWords.SET.contains("a"));
+		Assert.assertTrue(StopWords.getSet().contains("a"));
 	}
 
 }
