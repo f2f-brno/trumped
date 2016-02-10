@@ -4320,11 +4320,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-width: 1px 0 0;
 }
 .navbar-brand {
+  color: #888888;
+  font-weight:bold;
+  margin: auto;
   float: left;
-  height: 50px;
+  height: 65px;
   padding: 15px 15px;
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 80px;
+  line-height: 35px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
