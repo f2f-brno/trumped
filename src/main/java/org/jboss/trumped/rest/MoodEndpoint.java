@@ -17,7 +17,9 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.jboss.trumped.data.UrlContentAnalyzer;
@@ -32,17 +34,19 @@ public class MoodEndpoint {
 	UrlContentAnalyzer contentAnalyzer;
 
 	@GET
-	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response compare(@QueryParam("democrat") String democratCandidate,
 			@QueryParam("republican") String republicanCandidate) {
 		try {
+			final Map<String, Long> democratMood = contentAnalyzer.countWordsByEmotion(democratCandidate);
 			final Map<String, Long> republicanMood = contentAnalyzer.countWordsByEmotion(republicanCandidate);
-			final Map<String, Long> democratMood = contentAnalyzer.countWordsByEmotion(republicanCandidate);
 			final Map<String, Map<String, Long>> result = new HashMap<>();
 			result.put(democratCandidate, democratMood);
 			result.put(republicanCandidate, republicanMood);
-			return Response.ok(null).build();
+			System.out.println(result);
+			return Response.ok(result).build();
 		} catch (Throwable e) {
+			e.printStackTrace();
 			return Response.serverError().entity(e.getMessage()).build();
 		}
 	}
