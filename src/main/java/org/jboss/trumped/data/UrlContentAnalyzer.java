@@ -18,6 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -70,15 +71,18 @@ public class UrlContentAnalyzer {
 		return negativeEmotions;
 	}
 	
-	public Map<String, Long> countWords(final String candidateName)
+	public Map<String, Long> countWordsByEmotion(final String candidateName)
 			throws MalformedURLException, IOException, SAXException, TikaException {
-		
 		final List<String> words = new ArrayList<String>();
 		for (String url : Candidates.LIST.get(candidateName)) {
 			words.addAll(tokenizePage(url));
 		}
-				
-		return words.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		final Map<String, Long> countByEmotion = new HashMap<>();
+		final Long positiveCount = words.stream().filter(word -> this.positiveEmotions.contains(words)).collect(Collectors.counting());
+		final Long negativeCount = words.stream().filter(word -> this.negativeEmotions.contains(words)).collect(Collectors.counting());
+		countByEmotion.put("positive", positiveCount);
+		countByEmotion.put("negative", negativeCount);
+		return countByEmotion;
 	}
 	
 	

@@ -11,6 +11,9 @@
 
 package org.jboss.trumped.rest;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -24,16 +27,24 @@ import org.jboss.trumped.data.UrlContentAnalyzer;
  */
 @Path("/mood")
 public class MoodEndpoint {
-	
+
 	@Inject
 	UrlContentAnalyzer contentAnalyzer;
-	
+
 	@GET
 	@Path("/")
-	public Response compare(@PathParam("democrat") String democratCandidate, @PathParam("republican") String republicanCandidate) {
-		
-		
-		return Response.ok(null).build();
+	public Response compare(@PathParam("democrat") String democratCandidate,
+			@PathParam("republican") String republicanCandidate) {
+		try {
+			final Map<String, Long> republicanMood = contentAnalyzer.countWordsByEmotion(republicanCandidate);
+			final Map<String, Long> democratMood = contentAnalyzer.countWordsByEmotion(republicanCandidate);
+			final Map<String, Map<String, Long>> result = new HashMap<>();
+			result.put(democratCandidate, democratMood);
+			result.put(republicanCandidate, republicanMood);
+			return Response.ok(null).build();
+		} catch (Throwable e) {
+			return Response.serverError().entity(e.getMessage()).build();
+		}
 	}
 
 }
