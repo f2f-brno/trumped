@@ -2,12 +2,12 @@
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.jboss</groupId>
 		<artifactId>jboss-parent</artifactId>
 		<version>19</version>
 	</parent>
-	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jboss.trumped</groupId>
 	<artifactId>trumped</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
@@ -16,6 +16,8 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.arquillian_core>1.1.11.Final</version.arquillian_core>
+		<version.junit>4.12</version.junit>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -25,6 +27,13 @@
 				<version>7.0</version>
 				<scope>provided</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>${version.arquillian_core}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -32,6 +41,17 @@
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -43,8 +63,8 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			<!-- 
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
@@ -68,8 +88,33 @@
 					</execution>
 				</executions>
 			</plugin>
+			 -->
 		</plugins>
 	</build>
-
-
+	<profiles>
+		<profile>
+			<id>arquillian-wildfly-managed</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.14.1</version>
+						<configuration>
+							<systemPropertyVariables>
+								<arquillian.launch>arquillian-wildfly-managed</arquillian.launch>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-arquillian-container-managed</artifactId>
+					<version>8.2.1.Final</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 </project>
