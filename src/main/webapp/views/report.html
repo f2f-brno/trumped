@@ -3,7 +3,7 @@
 	<div class="form-group">
 		<div class="row">
 			<div class="col-md-5 text-right">
-				<select id="left" ng-model="left" ng-required="true"
+				<select id="left" ng-model="republican" ng-required="true"
 					class="form-control">
 					<option value="">Select a candidate</option>
 					<option ng-repeat="item in republicans">{{item}}</option>
@@ -11,7 +11,7 @@
 			</div>
 			<div class="col-md-2 text-center">vs.</div>
 			<div class="col-md-5 text-left">
-				<select id="right" ng-model="right" ng-required="true"
+				<select id="right" ng-model="democrat" ng-required="true"
 					class="form-control">
 					<option value="">Select a candidate</option>
 					<option ng-repeat="item in democrats">{{item}}</option>
@@ -20,17 +20,22 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<button type="button" class="btn btn-primary" ng-click="mood(left, right)">FIGHT
+				<button type="button" class="btn btn-primary" ng-click="mood(republican, democrat)">FIGHT
 					!</button>
 			</div>
 		</div>
 		<hr/>
-		<div class="row">
+		<div class="row" ng-unless="loading">
 			<div class="col-md-6 text-center">
 				<img width="300" height="300" ng-src="{{democratsImg}}" ng-if="democratsImg">
 			</div>
 			<div class="col-md-6 text-center">
 				<img width="300" height="300" ng-src="{{republicansImg}}" ng-if="republicansImg">
+			</div>
+		</div>
+		<div class="row" ng-if="loading">
+			<div class="col-md-12 text-center">
+				<img ng-src="{{loading}}">
 			</div>
 		</div>
 		

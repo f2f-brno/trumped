@@ -1,4 +1,5 @@
-angular.module('trumpedwebapp')
+angular
+		.module('trumpedwebapp')
 		.controller(
 				'ReportController',
 				function($scope, $http, $location) {
@@ -9,18 +10,37 @@ angular.module('trumpedwebapp')
 					$scope.democrats = [ "Bernie Sanders", "Hillary Clinton",
 							"Martin O'Malley" ];
 
-					$scope.mood = function(left, right) {
+					$scope.mood = function(republican, democrat) {
 						var contextPath = $location.absUrl()
 								.contains('trumped') ? '/trumped' : '';
-						$http.get(
-								contextPath + '/rest/mood?democrat=' + left
-										+ '&republican=' + right).success(
-								function(data) {
-									$scope.result = data;
-//									data[left]
-									$scope.democratsImg = contextPath+'/img/face01.jpg';
-									$scope.republicansImg = contextPath+'/img/face02.jpg';
-								})
+						$scope.republicansImg = null;
+						$scope.democratsImg = null;
+						$scope.loading = contextPath + '/img/loading.gif';
+						$http
+								.get(
+										contextPath + '/rest/mood?democrat='
+												+ democrat + '&republican='
+												+ republican)
+								.success(
+										function(data) {
+											$scope.result = data;
+											$scope.loading = null;
+											var republicanIdx = '01';
+											var democratIdx = '12';
+											if (data[republican] < data[democrat]) {
+												republicanIdx = '12';
+												democratIdx = '01';
+											} else if (data[republican] == data[democrat]) {
+												republicanIdx = '06';
+												democratIdx = '06';
+											}
+											$scope.republicansImg = contextPath
+													+ '/img/face'
+													+ republicanIdx + '.jpg';
+											$scope.democratsImg = contextPath
+													+ '/img/face' + democratIdx
+													+ '.jpg';
+										})
 					}
 
 				});
