@@ -73,7 +73,11 @@ public class UrlContentAnalyzer {
 	public Map<String, Long> countWords(final String candidateName)
 			throws MalformedURLException, IOException, SAXException, TikaException {
 		
-		final List<String> words = tokenizePage(null);
+		final List<String> words = new ArrayList<String>();
+		for (String url : Candidates.LIST.get(candidateName)) {
+			words.addAll(tokenizePage(url));
+		}
+				
 		return words.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 	}
 	
