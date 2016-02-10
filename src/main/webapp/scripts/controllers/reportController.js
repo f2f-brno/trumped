@@ -17,6 +17,9 @@ angular.module('trumpedwebapp')
 										+ '&republican=' + right).success(
 								function(data) {
 									$scope.result = data;
+//									data[left]
+									$scope.democratsImg = contextPath+'/img/face01.jpg';
+									$scope.republicansImg = contextPath+'/img/face02.jpg';
 								})
 					}
 
