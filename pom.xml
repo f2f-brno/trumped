@@ -177,7 +177,7 @@
 						<artifactId>maven-war-plugin</artifactId>
 						<configuration>
 							<outputDirectory>deployments</outputDirectory>
-							<warName>trumped</warName>
+							<warName>ROOT</warName>
 						</configuration>
 					</plugin>
 				</plugins>

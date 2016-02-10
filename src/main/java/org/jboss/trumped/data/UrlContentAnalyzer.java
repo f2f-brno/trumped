@@ -53,9 +53,10 @@ public class UrlContentAnalyzer {
 
 	private List<String> positiveEmotions = null;
 	private List<String> negativeEmotions = null;
-	
+
 	public void loadEmotions() {
-		final InputStream emotionsStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("emotions.yml");
+		final InputStream emotionsStream = Thread.currentThread().getContextClassLoader()
+				.getResourceAsStream("emotions.yml");
 		final Yaml yaml = new Yaml();
 		final Map<String, List<String>> emotions = (Map<String, List<String>>) yaml.load(emotionsStream);
 		this.positiveEmotions = emotions.get("positive");
@@ -65,19 +66,22 @@ public class UrlContentAnalyzer {
 	public List<String> getPositiveEmotions() {
 		return positiveEmotions;
 	}
-	
+
 	public List<String> getNegativeEmotions() {
 		return negativeEmotions;
 	}
-	
+
 	public Map<String, Long> countWordsByEmotion(final String candidateName)
 			throws MalformedURLException, IOException, SAXException, TikaException {
-		if(this.positiveEmotions == null || this.negativeEmotions == null) {
+		if (this.positiveEmotions == null || this.negativeEmotions == null) {
 			loadEmotions();
 		}
 		final List<String> words = new ArrayList<String>();
-		for (String url : Candidates.LIST.get(candidateName)) {
-			words.addAll(tokenizePage(url));
+		List<String> urls = Candidates.LIST.get(candidateName);
+		if (urls != null) {
+			for (String url : urls) {
+				words.addAll(tokenizePage(url));
+			}
 		}
 		final Map<String, Long> countByEmotion = new HashMap<>();
 		final Long positiveCount = words.stream().filter(word -> this.positiveEmotions.contains(word)).count();
@@ -86,8 +90,6 @@ public class UrlContentAnalyzer {
 		countByEmotion.put("negative", negativeCount);
 		return countByEmotion;
 	}
-	
-	
 
 	/**
 	 * Tokenizes the content of the given URL
