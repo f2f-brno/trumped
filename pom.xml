@@ -158,5 +158,20 @@
 				</dependency>
 			</dependencies>
 		</profile>
+		<profile>
+			<id>openshift</id>
+			<build>
+				<finalName>website</finalName>
+				<plugins>
+					<plugin>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<outputDirectory>deployments</outputDirectory>
+							<warName>ROOT</warName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
