@@ -3,12 +3,9 @@ angular
 		.controller(
 				'ReportController',
 				function($scope, $http, $location) {
-					$scope.republicans = [ "Donald Trump", "John Kasich",
-							"Ted Cruz", "Jeb Bush", "Marco Rubio",
-							"Chris Christie", "Carly Fiorina", "Ben Carson",
-							"Jim Gilmore" ];
-					$scope.democrats = [ "Bernie Sanders", "Hillary Clinton",
-							"Martin O'Malley" ];
+					$scope.republicans = [ "Donald Trump", 
+          "Ted Cruz", "Jeb Bush" ];
+					$scope.democrats = [ "Bernie Sanders", "Hillary Clinton"];
 
 					$scope.mood = function(republican, democrat) {
 						var contextPath = $location.absUrl()
