@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<candidates>
+  <candidate>
+    <name>
+      Donald Trump
+    </name>
+    <URLS>
+      <URL>http://www.nytimes.com/2016/02/10/us/politics/new-hampshire-primary.html</URL>
+      <URL>http://www.theguardian.com/us-news/2016/feb/09/donald-trump-wins-new-hampshire-republican-primary-us-election-2016</URL>
+      <URL>http://www.vox.com/2016/2/9/10955378/new-hampshire-primary-results-trump-wins</URL>
+      <URL>http://edition.cnn.com/2016/02/09/politics/new-hampshire-primary-highlights/</URL>
+    </URLS>
+  </candidate>
+  <candidate>
+    <name>
+      Bernie Sanders
+    </name>
+    <URLS>
+      <URL>http://www.nytimes.com/2016/02/10/us/politics/new-hampshire-primary.html</URL>
+      <URL>http://www.theguardian.com/us-news/2016/feb/09/donald-trump-wins-new-hampshire-republican-primary-us-election-2016</URL>
+      <URL>http://www.vox.com/2016/2/9/10955378/new-hampshire-primary-results-trump-wins</URL>
+      <URL>http://edition.cnn.com/2016/02/09/politics/new-hampshire-primary-highlights/</URL>
+    </URLS>
+  </candidate>
+
+</candidates>
+
