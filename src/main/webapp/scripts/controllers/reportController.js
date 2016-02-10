@@ -3,15 +3,19 @@ angular
 		.controller(
 				'ReportController',
 				function($scope, $http, $location) {
-					$scope.republicans = [ "Donald Trump", 
-          "Ted Cruz", "Jeb Bush" ];
-					$scope.democrats = [ "Bernie Sanders", "Hillary Clinton"];
+					var lowerCaseCandidate = function(name) {
+						return name.toLowerCase().replace(' ', '_');
+					}
+					$scope.republicans = [ "Donald Trump", "Ted Cruz",
+							"Jeb Bush" ];
+					$scope.democrats = [ "Bernie Sanders", "Hillary Clinton" ];
 
 					$scope.mood = function(republican, democrat) {
 						var contextPath = $location.absUrl()
 								.contains('trumped') ? '/trumped' : '';
 						$scope.republicansImg = null;
 						$scope.democratsImg = null;
+						$scope.result = {};
 						$scope.loading = contextPath + '/img/loading.gif';
 						$http
 								.get(
@@ -22,21 +26,27 @@ angular
 										function(data) {
 											$scope.result = data;
 											$scope.loading = null;
-											var republicanIdx = '01';
-											var democratIdx = '12';
+											var republicanIdx = 'happy';
+											var democratIdx = 'sad';
 											if (data[republican] < data[democrat]) {
-												republicanIdx = '12';
-												democratIdx = '01';
+												// Democrats win
+												republicanIdx = 'sad';
+												democratIdx = 'happy';
 											} else if (data[republican] == data[democrat]) {
-												republicanIdx = '06';
-												democratIdx = '06';
+												// Both win
+												republicanIdx = 'happy';
+												democratIdx = 'happy';
 											}
 											$scope.republicansImg = contextPath
-													+ '/img/face'
-													+ republicanIdx + '.jpg';
+													+ '/img/'
+													+ lowerCaseCandidate(republican)
+													+ '_' + republicanIdx
+													+ '.jpeg';
 											$scope.democratsImg = contextPath
-													+ '/img/face' + democratIdx
-													+ '.jpg';
+													+ '/img/'
+													+ lowerCaseCandidate(democrat)
+													+ '_' + democratIdx
+													+ '.jpeg';
 										})
 					}
 
