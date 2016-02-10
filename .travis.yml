@@ -7,7 +7,7 @@ sudo: false
 
 deploy:
   provider: openshift
-  user: "ALRubinger"
-  password: "changeme"
+  user: $OPENSHIFT_USER
+  password: $OPENSHIFT_PASSWORD
   domain: "alrubingertemp"
   app: "brnochallenge"
